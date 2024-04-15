@@ -1,7 +1,13 @@
-import 'package:bloc/bloc.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:injectable/injectable.dart';
 import 'dart:ui';
 import '../shared/storage/storage.dart';
+import 'package:get_it/get_it.dart';
+
+final l10nControllerProvider =
+    StateNotifierProvider<L10nController, L10nState>((ref) {
+  return GetIt.I<L10nController>();
+});
 
 class L10nState {
   final Locale locale;
@@ -10,11 +16,11 @@ class L10nState {
 }
 
 @injectable
-class L10nCubit extends Cubit<L10nState> {
+class L10nController extends StateNotifier<L10nState> {
   static const _languageCodeStorageKey = 'language_code';
   static const _countryCodeStorageKey = 'country_code';
 
-  L10nCubit({
+  L10nController({
     @Named('defaultLocale') required this.defaultLocale,
     @Named('storage') required this.storage,
   }) : super(L10nState(defaultLocale)) {
@@ -32,14 +38,14 @@ class L10nCubit extends Cubit<L10nState> {
       ]).then((values) {
         return values[0] != null ? Locale(values[0], values[1]) : null;
       });
-      emit(L10nState(locale ?? defaultLocale));
+      state = L10nState(locale ?? defaultLocale);
     } catch (e) {
-      emit(L10nState(defaultLocale));
+      state = L10nState(defaultLocale);
     }
   }
 
   Future<void> setLocale(Locale locale) async {
-    emit(L10nState(locale));
+    state = L10nState(locale);
     await Future.wait([
       storage.write(_languageCodeStorageKey, locale.languageCode),
       storage.write(_countryCodeStorageKey, locale.countryCode)

@@ -12,6 +12,6 @@ const production = Environment('production');
   preferRelativeImports: true,
   throwOnMissingDependencies: true,
 )
-Future<GetIt> configureDependencies(Server server) {
-  return GetIt.instance.init(environment: server.name);
+Future<void> configureDependencies(Server server) async {
+  await GetIt.instance.init(environment: server.name);
 }

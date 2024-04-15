@@ -1,17 +1,15 @@
-import 'package:flutter/widgets.dart';
-
 import 'package:auto_route/auto_route.dart';
-
-import 'package:injectable/injectable.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_riverpod_firebase/src/data/entites/permission_role.dart';
+import 'package:flutter_riverpod_firebase/src/feature/auth/provider/auth_model.dart';
 import 'package:flutter_riverpod_firebase/src/routers/app_router.dart';
 import 'package:flutter_riverpod_firebase/src/routers/guards.dart';
-
-import '../../data/entites/permission_role.dart';
-
+import 'package:get_it/get_it.dart';
+import 'package:injectable/injectable.dart';
 
 @module
 abstract class RoutesModule {
-  @singleton
+  @lazySingleton
   AppRouter appRouter(RoleGuard roleGuard, List<AutoRoute> routes) {
     return AppRouter(roleGuard: roleGuard, routes: routes);
   }
@@ -30,9 +28,10 @@ abstract class RoutesModule {
     ];
   }
 
-  @singleton
+  @lazySingleton
   RoleGuard get roleGuard {
     return RoleGuard(
+      authController: GetIt.I<AuthController>(),
       policies: {
         TodoRoute.name: [
           PermissionRole.user,

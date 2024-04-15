@@ -16,7 +16,7 @@ class AppTheme extends InheritedWidget {
   }
 
   static AppThemeData of(BuildContext context) {
-    final AppThemeData? result = maybeOf(context);
+    final result = maybeOf(context);
     assert(result != null, 'No AppThemeData in context');
     return result!;
   }
