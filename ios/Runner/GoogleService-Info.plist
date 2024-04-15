@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyDND5RP1xj096tHnVEidaWXoRrfC3IoiNg</string>
+	<key>GCM_SENDER_ID</key>
+	<string>482449647759</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.riverpodfirebase.app.dev</string>
+	<key>PROJECT_ID</key>
+	<string>flutter-riverpod-with-firebase</string>
+	<key>STORAGE_BUCKET</key>
+	<string>flutter-riverpod-with-firebase.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:482449647759:ios:12184296d17272ceb6a8fa</string>
+</dict>
+</plist>

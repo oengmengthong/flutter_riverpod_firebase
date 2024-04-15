@@ -1,0 +1,85 @@
+name: flutter_riverpod_firebase
+description: A Very Good Project created by Very Good CLI.
+version: 1.0.0+1
+publish_to: none
+
+environment:
+  sdk: "^3.3.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  bloc: ^8.1.3
+  dev: ^1.0.0
+  flutter_bloc: ^8.1.4
+  flutter_svg: ^2.0.10+1
+  get_it: ^7.6.9
+  injectable: ^2.4.1
+  intl: ^0.18.1
+  json_serializable: ^6.7.1
+  pretty_dio_logger: ^1.3.1
+  retrofit: ^4.1.0
+  cupertino_icons: ^1.0.6
+  json_annotation: ^4.8.1
+  auto_route: ^8.0.3
+  flutter_lints: ^3.0.2
+  file_picker: ^8.0.0+1
+  image_picker: ^1.0.8
+  jiffy: ^6.2.1
+  image_cropper: ^5.0.1
+  clipboard: ^0.1.3
+  url_launcher: ^6.2.6
+  package_info_plus: ^7.0.0
+  bot_toast: ^4.1.3
+  keyboard_dismisser: ^3.0.0
+  webview_flutter: ^4.7.0
+  animations: ^2.0.11
+  flutter_secure_storage: ^9.0.0
+  shared_preferences: ^2.2.3
+  flutter_disk_lru_cache: ^1.0.1
+  logger: ^1.4.0
+  firebase_core: ^2.29.0
+  firebase_auth: ^4.19.1
+  cloud_firestore: ^4.16.1
+  firebase_storage: ^11.7.1
+  synchronized: ^3.1.0+1
+  uuid: ^4.4.0
+
+dev_dependencies:
+  bloc_test: ^9.1.6
+  flutter_test:
+    sdk: flutter
+  mocktail: ^1.0.3
+  very_good_analysis: ^5.1.0
+  build_runner: ^2.4.9
+  injectable_generator: ^2.6.1
+  retrofit_generator: ^8.1.0
+  melos: ^5.3.0
+  icon_font_generator: ^4.0.0
+  auto_route_generator: ^8.0.0
+
+flutter:
+  uses-material-design: true
+  generate: true
+
+
+  assets:
+    - assets/images/
+    - assets/vectors/
+
+  fonts:
+    - family: Jersey
+      fonts:
+        - asset: assets/fonts/Jersey_Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Jersey_Regular.ttf
+          weight: 500
+        - asset: assets/fonts/Jersey_Regular.ttf
+          weight: 600
+        - asset: assets/fonts/Jersey_Regular.ttf
+          weight: 700
+    - family: UiIcons
+      fonts:
+        - asset: assets/fonts/UiIcons.ttf

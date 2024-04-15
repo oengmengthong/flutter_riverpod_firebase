@@ -1,0 +1,108 @@
+name: flutter_riverpod_firebase
+
+sdkPath: .fvm/flutter_sdk
+ide:
+  intellij: true
+
+command:
+  environment:
+    sdk: ">=3.0.5 <4.0.0"
+    flutter: ">=3.13.6 <4.0.0"
+  bootstrap:
+    runPubGetInParallel: false
+
+packages:
+  - .
+
+scripts:
+  setup:
+    description: "Install necessary plug-ins and bootstrap the workspace"
+    run: |
+      dart pub global activate fvm && \
+      fvm install $FLUTTER_VERSION && \
+      fvm use $FLUTTER_VERSION && \
+      dart pub global activate spider && \
+      dart pub global activate flutterfire_cli && \
+      melos bootstrap
+    env:
+      FLUTTER_VERSION: 3.19.5
+  build_runner:
+    description: "Generate *.g.dart files on modules which depends on build_runner"
+    run: melos exec --depends-on="build_runner" fvm dart run build_runner build
+  pub:get:
+    description: "Run pub get on all packages"
+    run: melos exec -- fvm flutter pub get
+  gen-assets:
+    description: "Generate assets of images and icons"
+    run: |
+      melos exec -- \ spider build && \
+      melos exec -- \ fvm flutter pub run icon_font_generator:generator
+  run:debug:dev:
+    description: "Run the app in debug mode"
+    run: fvm flutter run --flavor development --target lib/main_development.dart
+  run:debug:staging:
+    description: "Run the app in debug mode"
+    run: fvm flutter run --flavor staging --target lib/main_staging.dart
+  run:debug:production:
+    description: "Run the app in debug mode"
+    run: fvm flutter run --flavor production --target lib/main_production.dart
+
+  #Build
+  build:dev:
+    description: "Run the app in debug mode"
+    run: |
+      melos run firebase:dev && \
+      melos run firebase:deploy && \
+      fvm flutter build apk --flavor development --target lib/main_development.dart
+  build:staging:
+    description: "Run the app in debug mode"
+    run:  |
+      melos exec -- \ melos run firebase:staging && \
+      fvm flutter build apk --flavor staging --target lib/main_staging.dart
+  build:production:
+    description: "Run the app in debug mode"
+    run:  |
+      melos exec -- \ melos run firebase:prod && \
+      fvm flutter build apk --flavor production --target lib/main_production.dart
+
+  # Firebase
+  firebase:dev:
+    run: flutterfire configure -p flutter-riverpod-with-firebase -y --platforms=android,ios,web -a com.riverpodfirebase.app.dev -i com.riverpodfirebase.app.dev
+    packageFilters:
+      scope: "flutter_riverpod_firebase"
+  firebase:staging:
+    run: flutterfire configure -p flutter-riverpod-with-firebase -y --platforms=android,ios,web -a com.riverpodfirebase.app.stg -i com.riverpodfirebase.app.stg
+    packageFilters:
+      scope: "flutter_riverpod_firebase"
+  firebase:prod:
+    run: flutterfire configure -p flutter-riverpod-with-firebase -y --platforms=android,ios,web -a com.riverpodfirebase.app -i com.riverpodfirebase.app
+    packageFilters:
+      scope: "flutter_riverpod_firebase"
+  firebase:deploy:web:dev:
+    run: |
+      melos run firebase:dev && \
+      melos run firebase:deploy && \
+      fvm flutter build web --target lib/main_development.dart && \
+      firebase deploy --only hosting
+    packageFilters:
+      scope: "flutter_riverpod_firebase"
+  firebase:deploy:web:staging:
+    run: |
+      melos run firebase:staging && \
+      melos run firebase:deploy && \
+      fvm flutter build web --target lib/main_staging.dart && \
+      firebase deploy --only hosting
+    packageFilters:
+      scope: "flutter_riverpod_firebase"
+  firebase:deploy:web:prod:
+    run: |
+      melos run firebase:prod && \
+      melos run firebase:deploy && \
+      fvm flutter build web --target lib/main_production.dart && \
+      firebase deploy --only hosting
+    packageFilters:
+      scope: "flutter_riverpod_firebase"
+  firebase:deploy:
+    run: firebase deploy --only firestore,storage
+    packageFilters:
+      scope: "flutter_riverpod_firebase"
