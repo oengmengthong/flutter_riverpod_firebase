@@ -11,18 +11,21 @@ final authControllerProvider =
 });
 
 class AuthState {
-  AuthState(
-    this.isAuthenticated,
-    this.userRole,
-  );
+  AuthState({
+    this.userRole = PermissionRole.guest,
+    this.loading = false,
+    this.isAuthenticated = false,
+    this.error = '',
+  });
+  final bool loading;
+  final String error;
   final bool isAuthenticated;
   final PermissionRole userRole;
 }
 
 @injectable
 class AuthController extends StateNotifier<AuthState> {
-  AuthController(this.authRepository, this.userRepository)
-      : super(AuthState(false, PermissionRole.guest));
+  AuthController(this.authRepository, this.userRepository) : super(AuthState());
 
   final AuthRepository authRepository;
   final UserRepository userRepository;
@@ -32,30 +35,57 @@ class AuthController extends StateNotifier<AuthState> {
     try {
       final user = userRepository.getCurrentUser();
       if (user != null) {
-        state = AuthState(true, PermissionRole.user);
+        state = AuthState(
+          userRole: PermissionRole.user,
+          isAuthenticated: true,
+        );
       } else {
-        state = AuthState(false, PermissionRole.guest);
+        state = AuthState();
       }
     } catch (e) {
-      state = AuthState(false, PermissionRole.guest);
+      state = AuthState();
     }
   }
 
-  Future<void> logIn() async {
+  Future<void> logIn({
+    required String email,
+    required String password,
+  }) async {
     try {
-      await authRepository.signInAnonymously();
-      state = AuthState(true, PermissionRole.user);
+      await authRepository.signInWithEmailPassword(email, password);
+      state = AuthState(
+        userRole: PermissionRole.user,
+        isAuthenticated: true,
+      );
     } catch (e) {
-      state = AuthState(false, PermissionRole.guest);
+      state = AuthState();
+    }
+  }
+
+  Future<void> signUp({
+    required String email,
+    required String password,
+  }) async {
+    try {
+      await authRepository.signUpWithEmailPassword(email, password);
+      state = AuthState(
+        userRole: PermissionRole.user,
+        isAuthenticated: true,
+      );
+    } catch (e) {
+      state = AuthState();
     }
   }
 
   Future<void> logOut() async {
     try {
       await authRepository.signOut();
-      state = AuthState(false, PermissionRole.guest);
+      state = AuthState();
     } catch (e) {
-      state = AuthState(true, PermissionRole.guest);
+      state = AuthState(
+        isAuthenticated: true,
+        userRole: PermissionRole.user,
+      );
     }
   }
 }

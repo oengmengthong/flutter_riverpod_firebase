@@ -21,6 +21,10 @@ abstract class RoutesModule {
         initial: true,
         path: Navigator.defaultRouteName,
       ),
+      AutoRoute(
+        page: LoginRoute.page,
+      ),
+      AutoRoute(page: RegisterRoute.page),
       RedirectRoute(
         path: '*',
         redirectTo: Navigator.defaultRouteName,
@@ -33,9 +37,14 @@ abstract class RoutesModule {
     return RoleGuard(
       authController: GetIt.I<AuthController>(),
       policies: {
+        LoginRoute.name: [
+          PermissionRole.guest,
+        ],
+        RegisterRoute.name: [
+          PermissionRole.guest,
+        ],
         TodoRoute.name: [
           PermissionRole.user,
-          PermissionRole.guest,
         ],
       },
     );

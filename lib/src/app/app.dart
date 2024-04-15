@@ -11,6 +11,8 @@ import 'package:flutter_riverpod_firebase/src/shared/theme/app_theme.dart';
 import 'package:flutter_riverpod_firebase/src/shared/theme/app_theme_data.dart';
 import 'package:flutter_riverpod_firebase/src/shared/utils/clear_focus_navigator_observer.dart';
 
+import '../feature/auth/provider/auth_model.dart';
+
 class App extends ConsumerWidget {
   const App({super.key});
 

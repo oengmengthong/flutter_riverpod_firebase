@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter_riverpod_firebase/src/feature/todo/todo.dart';
 import '../feature/auth/view/login_page.dart';
+import '../feature/auth/view/register_page.dart';
 import 'guards.dart';
 
 part 'app_router.gr.dart';
@@ -25,7 +26,7 @@ class AppRouter extends _$AppRouter implements AutoRouteGuard {
     if (await roleGuard.resolve(resolver.route.name)) {
       resolver.next();
     } else {
-      await resolver.redirect(const TodoRoute());
+      await resolver.redirect(const LoginRoute());
     }
   }
 }
