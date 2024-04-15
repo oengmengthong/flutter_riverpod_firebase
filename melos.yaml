@@ -28,7 +28,7 @@ scripts:
       FLUTTER_VERSION: 3.19.5
   build_runner:
     description: "Generate *.g.dart files on modules which depends on build_runner"
-    run: melos exec --depends-on="build_runner" fvm dart run build_runner build
+    run: melos exec --depends-on="build_runner" fvm dart run build_runner build --delete-conflicting-outputs
   pub:get:
     description: "Run pub get on all packages"
     run: melos exec -- fvm flutter pub get

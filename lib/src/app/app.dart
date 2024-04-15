@@ -31,7 +31,7 @@ class App extends StatelessWidget {
         child: BlocBuilder<L10nCubit, L10nState>(
           builder: (context, l10n) {
             return MaterialApp.router(
-              title: 'Flutter Cubit Firebase',
+              title: 'Riverpod Firebase',
               theme: context.appTheme.build(context),
               locale: l10n.locale,
               localizationsDelegates: AppLocalizations.localizationsDelegates,

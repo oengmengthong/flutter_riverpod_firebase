@@ -13,6 +13,5 @@ linter:
   rules:
     public_member_api_docs: false
     constant_identifier_names: false
-    prefer_relative_imports: true
     avoid_print: true
     prefer_single_quotes: true

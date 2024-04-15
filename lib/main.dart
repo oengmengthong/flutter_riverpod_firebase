@@ -9,9 +9,7 @@ import 'firebase_options.dart';
 import 'src/app/app.dart';
 import 'src/configs/server.dart';
 import 'src/di/injection.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 Future<void> init(Server server) async {
   WidgetsFlutterBinding.ensureInitialized();

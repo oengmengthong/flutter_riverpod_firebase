@@ -19,7 +19,7 @@ abstract class RoutesModule {
   List<AutoRoute> get routes {
     return [
       AutoRoute(
-        page: CounterRoute.page,
+        page: TodoRoute.page,
         initial: true,
         path: Navigator.defaultRouteName,
       ),
@@ -34,7 +34,7 @@ abstract class RoutesModule {
   RoleGuard get roleGuard {
     return RoleGuard(
       policies: {
-        CounterRoute.name: [
+        TodoRoute.name: [
           PermissionRole.user,
           PermissionRole.guest,
         ],

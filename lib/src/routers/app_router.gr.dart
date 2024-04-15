@@ -15,33 +15,19 @@ abstract class _$AppRouter extends RootStackRouter {
 
   @override
   final Map<String, PageFactory> pagesMap = {
-    CounterRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const CounterPage(),
-      );
-    },
     LoginRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const LoginPage(),
       );
     },
+    TodoRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const TodoPage(),
+      );
+    },
   };
-}
-
-/// generated route for
-/// [CounterPage]
-class CounterRoute extends PageRouteInfo<void> {
-  const CounterRoute({List<PageRouteInfo>? children})
-      : super(
-          CounterRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'CounterRoute';
-
-  static const PageInfo<void> page = PageInfo<void>(name);
 }
 
 /// generated route for
@@ -54,6 +40,20 @@ class LoginRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'LoginRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [TodoPage]
+class TodoRoute extends PageRouteInfo<void> {
+  const TodoRoute({List<PageRouteInfo>? children})
+      : super(
+          TodoRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'TodoRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
