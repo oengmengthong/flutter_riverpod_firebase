@@ -16,7 +16,7 @@ FormGroup registerForm(){
     'confirmPassword': FormControl<String>(
       validators: [
         Validators.required,
-        Validators.mustMatch('password','confirmPassword')
+        Validators.mustMatch('confirmPassword','password')
       ],
     ),
   });
