@@ -4,10 +4,10 @@ import 'package:flutter/widgets.dart';
 
 class StreamListener<T> extends StatefulWidget {
   const StreamListener({
-    super.key,
     required this.stream,
     required this.listener,
     required this.child,
+    super.key,
   });
 
   final Stream<T> stream;
