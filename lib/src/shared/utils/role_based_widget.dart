@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_riverpod_firebase/src/data/entites/permission_role.dart';
-import 'package:flutter_riverpod_firebase/src/feature/auth/provider/auth_model.dart';
+import 'package:flutter_riverpod_firebase/src/feature/auth/view_model/auth_model.dart';
 
 class RoleBasedWidget extends ConsumerWidget {
   const RoleBasedWidget({

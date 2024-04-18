@@ -7,7 +7,7 @@ import 'package:reactive_forms/reactive_forms.dart';
 
 import '../../../shared/ui/transparent_app_bar.dart';
 import '../../../shared/ui/with_loading_button.dart';
-import '../provider/auth_model.dart';
+import '../view_model/auth_model.dart';
 
 @RoutePage()
 class RegisterPage extends StatelessWidget {
