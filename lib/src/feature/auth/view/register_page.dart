@@ -5,9 +5,9 @@ import 'package:flutter_riverpod_firebase/src/feature/auth/view/register_form.da
 import 'package:flutter_riverpod_firebase/src/shared/extensions/context_exts.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
-import '../../../shared/ui/transparent_app_bar.dart';
-import '../../../shared/ui/with_loading_button.dart';
-import '../view_model/auth_model.dart';
+import '../../../shared/widgets/transparent_app_bar.dart';
+import '../../../shared/widgets/with_loading_button.dart';
+import '../view_model/auth_riverpod.dart';
 
 @RoutePage()
 class RegisterPage extends StatelessWidget {

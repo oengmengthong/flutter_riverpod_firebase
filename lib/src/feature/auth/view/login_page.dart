@@ -2,10 +2,10 @@ import 'package:auto_route/annotations.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_riverpod_firebase/src/feature/auth/view_model/auth_model.dart';
+import 'package:flutter_riverpod_firebase/src/feature/auth/view_model/auth_riverpod.dart';
 import 'package:flutter_riverpod_firebase/src/feature/auth/view/login_form.dart';
 import 'package:flutter_riverpod_firebase/src/shared/extensions/context_exts.dart';
-import 'package:flutter_riverpod_firebase/src/shared/ui/with_loading_button.dart';
+import 'package:flutter_riverpod_firebase/src/shared/widgets/with_loading_button.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
 import '../../../routers/app_router.dart';

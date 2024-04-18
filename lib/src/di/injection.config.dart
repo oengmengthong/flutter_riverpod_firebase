@@ -30,7 +30,7 @@ import '../data/repositories/auth_repository.dart' as _i21;
 import '../data/repositories/auth_repository_impl.dart' as _i22;
 import '../data/repositories/user_repository.dart' as _i23;
 import '../data/repositories/user_repository_impl.dart' as _i24;
-import '../feature/auth/view_model/auth_model.dart' as _i25;
+import '../feature/auth/view_model/auth_riverpod.dart' as _i25;
 import '../l10n/l10n_model.dart' as _i16;
 import '../routers/app_router.dart' as _i8;
 import '../routers/guards.dart' as _i4;

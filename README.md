@@ -27,6 +27,77 @@ _\*Flutter Riverpod Firebase works on iOS, Android, Web, and Windows._
 
 ---
 
+## Structure 🏗
+
+The project is structured as follows:
+
+```
+├── lib
+│   ├── src
+│   │   ├── app
+│   │   │   ├── app.dart
+│   │   ├── configs
+│   │   │   ├── server.dart
+│   │   ├── data
+│   │   │   ├── datasources
+│   │   │   │   ├── remote
+│   │   │   │   │   ├── auth_data_remote.dart
+│   │   │   │   │   ├── user_data_remote.dart
+│   │   │   │   ├── local
+│   │   │   │   │   ├── auth_data_local.dart
+│   │   │   │   │   ├── todo_data_local.dart
+│   │   │   │   │   ├── user_data_local.dart
+│   │   │   ├── entites
+│   │   │   │   ├── todo.dart
+│   │   │   ├── repositories
+│   │   │   │   ├── auth_repository.dart
+│   │   │   │   ├── auth_repository_impl.dart
+│   │   ├── di
+│   │   │   ├── modules
+│   │   │   │   ├── auth_module.dart
+│   │   │   │   ├── routes_module.dart
+│   │   │   │   ├── storage_module.dart
+│   │   │   ├── injection.config.dart
+│   │   │   ├── injection.dart
+│   │   ├── features
+│   │   │   ├── auth
+│   │   │   │   ├── view
+│   │   │   │   │   ├── login_form.dart
+│   │   │   │   │   ├── login_page.dart
+│   │   │   │   ├── view_model
+│   │   │   │   │   ├── auth_riverpod.dart
+│   │   │   │   ├── auth.dart
+│   │   │   ├── todo
+│   │   │   │   ├── view
+│   │   │   │   │   ├── todo_page.dart
+│   │   │   │   ├── view_model
+│   │   │   │   │   ├── todo_riverpod.dart
+│   │   │   │   ├── todo.dart
+│   │   │   ├── feature.dart
+│   │   ├── l10n
+│   │   │   ├── arb
+│   │   │   │   ├── app_en.arb
+│   │   │   │   ├── app_ja.arb
+│   │   │   ├── l10n.dart
+│   │   │   ├── l10n_model.dart
+│   │   ├── routes
+│   │   │   ├── app_router.dart
+│   │   │   ├── guards.dart
+│   │   ├── shared
+│   │   │   ├── extensions
+│   │   │   ├── listeners
+│   │   │   ├── resources
+│   │   │   ├── storage
+│   │   │   ├── theme
+│   │   │   ├── widgets
+│   │   │   ├── utils
+│   ├── firebase_options.dart
+│   ├── main.dart
+│   ├── main_development.dart
+│   ├── main_staging.dart
+│   └── main_production.dart
+```
+
 ## Running Tests 🧪
 
 To run all unit and widget tests use the following command:
