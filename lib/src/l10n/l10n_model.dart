@@ -5,25 +5,19 @@ import '../shared/storage/storage.dart';
 import 'package:get_it/get_it.dart';
 
 final l10nControllerProvider =
-    StateNotifierProvider<L10nController, L10nState>((ref) {
+    StateNotifierProvider<L10nController, Locale>((ref) {
   return GetIt.I<L10nController>();
 });
 
-class L10nState {
-  final Locale locale;
-
-  L10nState(this.locale);
-}
-
 @injectable
-class L10nController extends StateNotifier<L10nState> {
+class L10nController extends StateNotifier<Locale> {
   static const _languageCodeStorageKey = 'language_code';
   static const _countryCodeStorageKey = 'country_code';
 
   L10nController({
     @Named('defaultLocale') required this.defaultLocale,
     @Named('storage') required this.storage,
-  }) : super(L10nState(defaultLocale)) {
+  }) : super(defaultLocale) {
     _initialize();
   }
 
@@ -38,14 +32,14 @@ class L10nController extends StateNotifier<L10nState> {
       ]).then((values) {
         return values[0] != null ? Locale(values[0], values[1]) : null;
       });
-      state = L10nState(locale ?? defaultLocale);
+      state = locale ?? defaultLocale;
     } catch (e) {
-      state = L10nState(defaultLocale);
+      state = defaultLocale;
     }
   }
 
   Future<void> setLocale(Locale locale) async {
-    state = L10nState(locale);
+    state = locale;
     await Future.wait([
       storage.write(_languageCodeStorageKey, locale.languageCode),
       storage.write(_countryCodeStorageKey, locale.countryCode)

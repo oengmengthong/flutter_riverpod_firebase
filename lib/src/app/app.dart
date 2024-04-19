@@ -16,7 +16,6 @@ class App extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final l10n = ref.watch(l10nControllerProvider);
     return AppTheme(
       themeData: AppThemeData.system(context),
       child: Builder(
@@ -24,7 +23,7 @@ class App extends ConsumerWidget {
           return MaterialApp.router(
             title: 'Riverpod Firebase',
             theme: context.appTheme.build(context),
-            locale: l10n.locale,
+            locale: ref.watch(l10nControllerProvider),
             localizationsDelegates: AppLocalizations.localizationsDelegates,
             supportedLocales: AppLocalizations.supportedLocales,
             routerConfig: GetIt.I<AppRouter>().config(
